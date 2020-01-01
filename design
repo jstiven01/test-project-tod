@@ -12,10 +12,11 @@ Methods
 class Tasks
 Properties
  title
- description
  dueDate
  priority
  remindmeDAte
+ isDone
+ note
  subtasks [{ name: string, status}]
 Methods 
  newTAsk(constructor)
