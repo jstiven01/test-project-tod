@@ -1,0 +1,30 @@
+class Project
+Properties
+ name 
+ tasks []
+Methods
+ getNAme
+ setName
+ deleteProject
+ newProject(constructor)
+
+
+class Tasks
+Properties
+ title
+ description
+ dueDate
+ priority
+ remindmeDAte
+ subtasks [{ name: string, status}]
+Methods 
+ newTAsk(constructor)
+ setdueDate
+ setPriority
+ setRemindmeDate
+ setsubtasks
+ setTitle
+ setDescription
+ 
+
+ 
