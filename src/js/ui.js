@@ -1,9 +1,13 @@
 import storage from './storage'
 import Task from './task'
 import Project from './project'
+import { de } from 'date-fns/locale';
 const UI = (() => {
 
+    let chosenProject ;
     const btnCreateProject = document.getElementById('create-project');
+    const projectsUser = document.getElementById('projects-user');
+    
 
     const showAllProjects = () => {
         let allProjects = storage.AllNameProjects().sort();
@@ -29,8 +33,21 @@ const UI = (() => {
         console.log('this is the listener', !storage.AllNameProjects().includes(nameProject));
     }
 
+    const selectedProject = (e) => {
+        const currentProject = document.getElementById('current-project');
+        const detailTask = document.getElementById('detail-task');
+        currentProject.innerText = e.target.innerText;
+        chosenProject = Project(storage.read(e.target.innerText));
+        if (chosenProject.tasks.length === 0){
+            detailTask.setAttribute('class','d-none')
+        }
+        console.log(e.target, chosenProject.title);
+    }
+
     const loadListeners = ()=>{
+        showAllProjects();
         btnCreateProject.addEventListener('click', createProject);
+        projectsUser.addEventListener('click', selectedProject);
     }
 
     return {
