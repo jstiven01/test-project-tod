@@ -7,8 +7,39 @@
     <title>Document</title>
 </head>
 <body>
-    <input type="date" name="date-test" id="date1" required>
-    <input type="submit" value="Save" id="save">
+    <div class="container-fluid m-0">
+        <div class="row  text-white" id="navbar">
+            <div class="col-3 text-center"><h4>Projects</h4></div>
+            <div class="col-6 text-center"><h4>Tasks</h4></div>
+            <div class="col-3 text-center"><h4>Task's Details</h4></div>
+        </div>
+        <div class="row">
+            <div class="col-3" id="projects-names">
+              <div class="d-flex my-2">
+                <button type="submit" class="btn btn-primary">+</button>
+                <input type="text" name="project-name" id="project-id-1" class="form-control" placeholder="Add a Project Name ..">
+              </div>
+              <div id="projects-user">
+              </div>
+            </div>
+            <div class="col-6" id="tasks-names">
+              <div class="current-project-task" id="current-project">
+              Current Project
+              </div>
+              <div class="d-flex my-2">
+                <button type="submit" class="btn btn-primary">+</button>
+                <input type="text" name="project-name" id="project-id-1" class="form-control" placeholder="Add a Task Name ..">
+              </div>
+              <div id="project-tasks">
+              </div>
+            </div>
+            <div class="col-3" id="tasks-details">
+              <div class="current-project-task" id="current-task">
+              Current Task
+              </div>
+            </div>
+        </div>
+    </div>
     <script src="main.js"></script>
 </body>
 </html>

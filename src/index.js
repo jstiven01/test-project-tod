@@ -1,3 +1,4 @@
+import './scss/style.scss';
 import storage from './js/storage'
 import Task from './js/task'
 import Project from './js/project'
