@@ -1,7 +1,5 @@
 import './scss/style.scss';
-import storage from './js/storage'
-import Task from './js/task'
-import Project from './js/project'
+import UI from './js/ui'
 console.log('Hey 2020');
 
 const project1 = {
@@ -74,7 +72,7 @@ console.log(storage.remove(project1.name));
 /*
 console.log('updated',data); //update data
 */
-
+/*
 const newTask = Task({title:'Task 2020',dueDate:''});
 const newPrj = Project({title:'New Project 1'});
 storage.create(newPrj.title, newPrj);
@@ -87,3 +85,6 @@ submit.addEventListener('click', ()=>{
 
 
 });
+*/
+
+UI.loadListeners();

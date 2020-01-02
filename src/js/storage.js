@@ -25,6 +25,8 @@ const storage = (()=> {
         }
     }
 
+    const AllNameProjects = () => Object.keys(localStorage);
+
     const remove = (key) => {
         if (Object.keys(localStorage).includes(key)){
             localStorage.removeItem(key);
@@ -35,7 +37,7 @@ const storage = (()=> {
     }
 
     return {
-        create, update, read, remove,
+        create, update, read, remove, AllNameProjects
     }
 
 })();
