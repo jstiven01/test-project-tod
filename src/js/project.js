@@ -1,20 +1,16 @@
 import Task from './task'
 
-const Project = (title) => {
-    let tasks = [];
-    const getTitle = () => title;
-
-    const getTasks = () => tasks;
+const Project = ({title, tasks = []}) => {
     
     const addTask = (task) => {
-        console.log(task.getTitle());
+        console.log(task.title);
         tasks.push(task);
         console.log('list: ', tasks);
     }
 
 
     return {
-        getTitle, addTask, getTasks
+        addTask, title, tasks
     }
 }
 

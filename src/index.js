@@ -74,14 +74,15 @@ console.log(storage.remove(project1.name));
 console.log('updated',data); //update data
 */
 
-const newTask = Task('Task 2020','');
-const newPrj = Project('New Project 1');
-console.log(newTask.getTitle());
+const newTask = Task({title:'Task 2020',dueDate:''});
+const newPrj = Project({title:'New Project 1'});
+storage.create(newPrj.title, newPrj);
 const submit = document.getElementById('save');
 submit.addEventListener('click', ()=>{
     const dueDate = document.getElementById('date1');
     newTask.dueDate = dueDate.value;
-    console.log('This is the date', newTask.getDueDate());
     newPrj.addTask(newTask);
-    storage.create(newPrj.getTitle(), newPrj.getTasks());
+    storage.update(newPrj.title, newPrj);
+
+
 });
