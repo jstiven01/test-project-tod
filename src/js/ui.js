@@ -10,6 +10,10 @@ const UI = (() => {
     const btnAddTask = document.getElementById('add-task');
     const projectTasks =  document.getElementById('project-tasks');
     const detailTask = document.getElementById('detail-task');
+    const btnEditTask = document.getElementById('edit-task');
+    const inputDueDate = document.getElementById('due-date');
+    const inputNote = document.getElementById('note');
+
     
 
     const showAllProjects = () => {
@@ -65,8 +69,27 @@ const UI = (() => {
     const selectedTask = (e) => {
         const currentTask = document.getElementById('current-task');
         currentTask.innerText = e.target.innerText;
+        let pickedTask = chosenProject.tasks.filter(task => task.title === e.target.innerText );
+        console.log('picked', pickedTask, pickedTask[0]);
+        chosenTask = Task(pickedTask[0]);
+        inputDueDate.value = chosenTask.dueDate;
+        inputNote.value = chosenTask.note;
         detailTask.classList.remove('d-none')
-        console.log(e.target, chosenProject.title);
+        console.log(e.target, chosenProject);
+    }
+
+    const editTask = () => {
+        console.log('edit Task')
+        chosenTask.dueDate = inputDueDate.value;
+        chosenTask.note = inputNote.value;
+        console.log('chosenProject before', chosenProject, chosenTask);
+        for(let i=0; i< chosenProject.tasks.length; i+=1) {
+            if (chosenProject.tasks[i].title === chosenTask.title) {
+                chosenProject.tasks[i] = chosenTask;
+                storage.update(chosenProject.title, chosenProject);
+                return
+            }
+        }        
     }
 
     const AddTaskToProject = () => {
@@ -86,6 +109,7 @@ const UI = (() => {
         projectsUser.addEventListener('click', selectedProject);
         btnAddTask.addEventListener('click',AddTaskToProject);
         projectTasks.addEventListener('click',selectedTask);
+        btnEditTask.addEventListener('click', editTask);
 
     }
 
