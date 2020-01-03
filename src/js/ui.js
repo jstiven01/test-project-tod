@@ -1,19 +1,19 @@
 import storage from './storage'
 import Task from './task'
 import Project from './project'
-import { de } from 'date-fns/locale';
 const UI = (() => {
 
     let chosenProject ;
+    let chosenTask;
     const btnCreateProject = document.getElementById('create-project');
     const projectsUser = document.getElementById('projects-user');
     const btnAddTask = document.getElementById('add-task');
     const projectTasks =  document.getElementById('project-tasks');
+    const detailTask = document.getElementById('detail-task');
     
 
     const showAllProjects = () => {
         let allProjects = storage.AllNameProjects().sort();
-        //const projectsUser = document.getElementById('projects-user');
         projectsUser.innerHTML = '';
         for (let i =0; i < allProjects.length; i+=1){
             console.log(allProjects[i]);
@@ -31,9 +31,12 @@ const UI = (() => {
         for (let i =0; i < chosenProject.tasks.length; i+=1){
             console.log(chosenProject.tasks[i]);
             let div = document.createElement('div');
-            div.setAttribute('class', 'card my-1');
+            let checkIsDone = document.createElement('input');
+            checkIsDone.type ='checkbox';
+            div.setAttribute('class', 'card my-1 d-flex');
             let span = document.createElement('span');
             span.innerHTML = chosenProject.tasks[i].title;
+            div.appendChild(checkIsDone);
             div.appendChild(span);
             projectTasks.appendChild(div);
         }
@@ -52,13 +55,17 @@ const UI = (() => {
 
     const selectedProject = (e) => {
         const currentProject = document.getElementById('current-project');
-        const detailTask = document.getElementById('detail-task');
         currentProject.innerText = e.target.innerText;
         chosenProject = Project(storage.read(e.target.innerText));
-        if (chosenProject.tasks.length === 0){
-            detailTask.setAttribute('class','d-none')
-        }
+        detailTask.setAttribute('class','d-none')
         showAllTasks();
+        console.log(e.target, chosenProject.title);
+    }
+
+    const selectedTask = (e) => {
+        const currentTask = document.getElementById('current-task');
+        currentTask.innerText = e.target.innerText;
+        detailTask.classList.remove('d-none')
         console.log(e.target, chosenProject.title);
     }
 
@@ -77,7 +84,9 @@ const UI = (() => {
         showAllProjects();
         btnCreateProject.addEventListener('click', createProject);
         projectsUser.addEventListener('click', selectedProject);
-        btnAddTask.addEventListener('click',AddTaskToProject)
+        btnAddTask.addEventListener('click',AddTaskToProject);
+        projectTasks.addEventListener('click',selectedTask);
+
     }
 
     return {
