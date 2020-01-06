@@ -18,3 +18,17 @@
     font-weight: bold;
     height : 40px;
 }
+
+.item {
+    height: 32px;
+    border:  #ced4da solid 1px;
+    background-color: white;
+    input[type="checkbox"] {
+        zoom: 1.5;
+        margin-left: 3px;
+
+    }
+    span {
+        margin: auto 0;
+    }
+}

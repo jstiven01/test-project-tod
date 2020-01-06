@@ -22,7 +22,7 @@ const UI = (() => {
         for (let i =0; i < allProjects.length; i+=1){
             console.log(allProjects[i]);
             let div = document.createElement('div');
-            div.setAttribute('class', 'card my-1');
+            div.setAttribute('class', 'item my-1');
             let span = document.createElement('span');
             span.innerHTML = allProjects[i];
             div.appendChild(span);
@@ -35,12 +35,16 @@ const UI = (() => {
         for (let i =0; i < chosenProject.tasks.length; i+=1){
             console.log(chosenProject.tasks[i]);
             let div = document.createElement('div');
+            let divCheck = document.createElement('div');
+            divCheck.setAttribute('class', 'form-check form-check-inline');
             let checkIsDone = document.createElement('input');
             checkIsDone.type ='checkbox';
-            div.setAttribute('class', 'card my-1 d-flex');
+            checkIsDone.setAttribute('class','form-check-input');
+            divCheck.appendChild(checkIsDone);
+            div.setAttribute('class', 'item my-1 d-flex');
             let span = document.createElement('span');
             span.innerHTML = chosenProject.tasks[i].title;
-            div.appendChild(checkIsDone);
+            div.appendChild(divCheck);
             div.appendChild(span);
             projectTasks.appendChild(div);
         }
