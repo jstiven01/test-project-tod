@@ -2,6 +2,9 @@
 #navbar {
     background-color: #563d7c;
     height: 5vh;
+    h3 {
+        margin: 5px 0;
+    }
 }
 
 #tasks-names {
@@ -23,6 +26,7 @@
     height: 32px;
     border:  #ced4da solid 1px;
     background-color: white;
+    
     input[type="checkbox"] {
         zoom: 1.5;
         margin-left: 3px;
@@ -30,5 +34,15 @@
     }
     span {
         margin: auto 0;
+        cursor: pointer;
+        &:hover {
+        color: #563d7c;
+      }
     }
+}
+
+.active {
+    background-color : #B0A8B9;
+    color: white;
+    font-weight: bold;
 }

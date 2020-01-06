@@ -50,6 +50,19 @@ const UI = (() => {
         }
     }
 
+    const itemActive = (container) => {
+
+        // Get all buttons with class="btn" inside the container
+        let items = container.getElementsByClassName("item");
+
+        // Loop through the buttons and add the active class to the current/clicked button
+        for (let i = 0; i < items.length; i++) {
+            items[i].classList.remove('active');
+            console.log(items[i]);
+            // Add the active class to the current/clicked button
+        }
+    }
+
 
     const createProject = () => {
         const nameProject =  document.getElementById('project-name').value;
@@ -62,12 +75,18 @@ const UI = (() => {
     }
 
     const selectedProject = (e) => {
-        const currentProject = document.getElementById('current-project');
-        currentProject.innerText = e.target.innerText;
-        chosenProject = Project(storage.read(e.target.innerText));
-        detailTask.setAttribute('class','d-none')
-        showAllTasks();
-        console.log(e.target, chosenProject.title);
+        if (event.target.tagName.toLowerCase() === 'span') {
+            const currentProject = document.getElementById('current-project');
+            currentProject.innerText = e.target.innerText;
+            chosenProject = Project(storage.read(e.target.innerText));
+            detailTask.setAttribute('class','d-none')
+            showAllTasks();
+            itemActive(projectsUser);
+            console.log(e.target.tagName);
+            e.target.parentNode.classList.add("active");
+            console.log(e.target, chosenProject.title);
+        }
+
     }
 
     const selectedTask = (e) => {
