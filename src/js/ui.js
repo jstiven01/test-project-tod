@@ -97,6 +97,8 @@ const UI = (() => {
         chosenTask = Task(pickedTask[0]);
         inputDueDate.value = chosenTask.dueDate;
         inputNote.value = chosenTask.note;
+        itemActive(projectTasks);
+        e.target.parentNode.classList.add("active");
         detailTask.classList.remove('d-none')
         console.log(e.target, chosenProject);
     }
